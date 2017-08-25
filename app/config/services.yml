@@ -1,0 +1,23 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    admin.invoice:
+        class: AppBundle\Admin\InvoiceAdmin
+        arguments: [~, AppBundle\Entity\Invoice, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Invoice }
+        calls:
+           - [ addChild, ["@admin.invoice_row"] ] 
+        public: true
+    admin.invoice_row:
+        class: AppBundle\Admin\InvoiceRowAdmin
+        arguments: [~, AppBundle\Entity\InvoiceRow, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Row post }
+        public: true
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
