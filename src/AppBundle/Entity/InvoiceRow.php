@@ -83,6 +83,7 @@ class InvoiceRow
     	return $this->invoice;
     }
     
+
     /**
      * Set invoice
      *

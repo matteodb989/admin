@@ -44,7 +44,7 @@ class Invoice
     private $client_id;
     
     /**
-     * @ORM\OneToMany(targetEntity="InvoiceRow", mappedBy="invoice", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="InvoiceRow", mappedBy="invoice", cascade={"all"})
      */
     private $invoiceRows;
 
@@ -148,5 +148,6 @@ class Invoice
     {
     	$this->invoiceRows->add( $invoiceRow );
     }
+    
 }
 

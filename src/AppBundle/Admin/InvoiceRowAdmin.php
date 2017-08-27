@@ -21,7 +21,7 @@ class InvoiceRowAdmin extends AbstractAdmin
         	->add('amount', 'number')
         	->add('vat', 'number')
         	->add('tot_amount', null, array('attr' => array('readonly' => 'readonly')))
-        	->add('invoice', 'sonata_type_model_hidden', array('attr' => array('hidden' => true)))->end();
+        	->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

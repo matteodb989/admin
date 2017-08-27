@@ -28,7 +28,7 @@ class InvoiceAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        //$datagridMapper->add('name');
+        
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -37,6 +37,20 @@ class InvoiceAdmin extends AbstractAdmin
         	->addIdentifier('number')
         	->addIdentifier('date')
         	->addIdentifier('client_id');
+    }
+    
+    public function prePersist($object)
+    {    	
+    	foreach ($object->getInvoiceRows() as $row) {
+    		$row->setInvoice($object);
+    	}
+    }
+    
+    public function preUpdate($object)
+    {    	
+    	foreach ($object->getInvoiceRows() as $row) {
+    		$row->setInvoice($object);
+    	}
     }
     
 }
